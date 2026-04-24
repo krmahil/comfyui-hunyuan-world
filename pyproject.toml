@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-hunyuan-world"
+description = "ComfyUI custom nodes for immersive 3D world generation using Tencent HunyuanWorld 1.0"
+version = "0.1.0"
+license = "MIT"
+
+[project.urls]
+Repository = "https://github.com/krmahil/comfyui-hunyuan-world"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "mahilkr"
+DisplayName = "HunyuanWorld 3D World Generation"
+Icon = ""

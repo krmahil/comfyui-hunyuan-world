@@ -1,0 +1,241 @@
+{
+  "last_node_id": 7,
+  "last_link_id": 7,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [100, 250],
+      "size": [300, 300],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [1],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": ["example.png", "image"]
+    },
+    {
+      "id": 2,
+      "type": "HYWorldImage2Pano",
+      "pos": [480, 250],
+      "size": [400, 380],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "panorama",
+          "type": "IMAGE",
+          "links": [2],
+          "slot_index": 0
+        },
+        {
+          "name": "panorama_path",
+          "type": "STRING",
+          "links": [3],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "HYWorldImage2Pano"
+      },
+      "widgets_values": [
+        "",
+        "",
+        42,
+        960,
+        1920,
+        80,
+        30.0,
+        50,
+        6,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 3,
+      "type": "PreviewImage",
+      "pos": [960, 250],
+      "size": [350, 260],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 4,
+      "type": "HYWorldSceneGen",
+      "pos": [960, 560],
+      "size": [400, 320],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "panorama_path",
+          "type": "STRING",
+          "link": 3,
+          "widget": {
+            "name": "panorama_path"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mesh_paths_json",
+          "type": "STRING",
+          "links": [4],
+          "slot_index": 0
+        },
+        {
+          "name": "output_directory",
+          "type": "STRING",
+          "links": [5],
+          "slot_index": 1
+        },
+        {
+          "name": "layer_count",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "HYWorldSceneGen"
+      },
+      "widgets_values": [
+        "",
+        "stones",
+        "trees",
+        "outdoor",
+        3840,
+        42,
+        false,
+        false,
+        ""
+      ]
+    },
+    {
+      "id": 5,
+      "type": "ShowText|pysssss",
+      "pos": [1440, 560],
+      "size": [400, 140],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 4,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [""],
+      "title": "Mesh Paths"
+    },
+    {
+      "id": 6,
+      "type": "ShowText|pysssss",
+      "pos": [1440, 740],
+      "size": [400, 80],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 5,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [""],
+      "title": "Output Directory"
+    },
+    {
+      "id": 7,
+      "type": "Note",
+      "pos": [100, 100],
+      "size": [1210, 110],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "properties": {
+        "text": "HunyuanWorld - Image to 3D World (Two-Stage)\n\nStage 1: Input Image → 360° Panorama (perspective → equirectangular via FLUX.1-Fill-dev)\nStage 2: Panorama → Layered 3D Meshes (semantic decomposition + world reconstruction)\n\nlabels_fg1='stones', labels_fg2='trees' — change these to match your scene objects."
+      },
+      "widgets_values": [
+        "HunyuanWorld - Image to 3D World (Two-Stage)\n\nStage 1: Input Image → 360° Panorama (perspective → equirectangular via FLUX.1-Fill-dev)\nStage 2: Panorama → Layered 3D Meshes (semantic decomposition + world reconstruction)\n\nlabels_fg1='stones', labels_fg2='trees' — change these to match your scene objects."
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "IMAGE"],
+    [2, 2, 0, 3, 0, "IMAGE"],
+    [3, 2, 1, 4, 0, "STRING"],
+    [4, 4, 0, 5, 0, "STRING"],
+    [5, 4, 1, 6, 0, "STRING"]
+  ],
+  "groups": [
+    {
+      "title": "Stage 1: Image → Panorama",
+      "bounding": [80, 230, 1250, 290],
+      "color": "#3f789e"
+    },
+    {
+      "title": "Stage 2: Panorama → 3D World",
+      "bounding": [940, 540, 920, 300],
+      "color": "#8e6e3f"
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8,
+      "offset": [0, 0]
+    }
+  },
+  "version": 0.4
+}

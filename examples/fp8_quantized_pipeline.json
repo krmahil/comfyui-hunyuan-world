@@ -1,0 +1,177 @@
+{
+  "last_node_id": 5,
+  "last_link_id": 5,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "HYWorldText2Pano",
+      "pos": [100, 250],
+      "size": [400, 340],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "panorama",
+          "type": "IMAGE",
+          "links": [1],
+          "slot_index": 0
+        },
+        {
+          "name": "panorama_path",
+          "type": "STRING",
+          "links": [2],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "HYWorldText2Pano"
+      },
+      "widgets_values": [
+        "A cozy living room with a fireplace, bookshelves, warm lighting, plush furniture, modern minimalist design",
+        "outdoor, nature, blur, low-quality",
+        42,
+        960,
+        1920,
+        30.0,
+        50,
+        6,
+        true,
+        true
+      ],
+      "title": "Text2Pano (FP8 + Cache)"
+    },
+    {
+      "id": 2,
+      "type": "PreviewImage",
+      "pos": [580, 250],
+      "size": [350, 260],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 3,
+      "type": "HYWorldSceneGen",
+      "pos": [580, 560],
+      "size": [400, 320],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "panorama_path",
+          "type": "STRING",
+          "link": 2,
+          "widget": {
+            "name": "panorama_path"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mesh_paths_json",
+          "type": "STRING",
+          "links": [3],
+          "slot_index": 0
+        },
+        {
+          "name": "output_directory",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "layer_count",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "HYWorldSceneGen"
+      },
+      "widgets_values": [
+        "",
+        "furniture sofa",
+        "bookshelf lamp",
+        "indoor",
+        3840,
+        42,
+        true,
+        false,
+        ""
+      ],
+      "title": "SceneGen (FP8 + Indoor)"
+    },
+    {
+      "id": 4,
+      "type": "ShowText|pysssss",
+      "pos": [1060, 560],
+      "size": [400, 140],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 3,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [""],
+      "title": "Output Mesh Paths"
+    },
+    {
+      "id": 5,
+      "type": "Note",
+      "pos": [100, 100],
+      "size": [880, 110],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "properties": {
+        "text": "HunyuanWorld - FP8 Quantized Pipeline (RTX 4090 Compatible)\n\nThis workflow enables FP8 quantization and DeepCache for running on consumer GPUs.\n~20-24GB VRAM required. Scene class set to 'indoor' for interior scenes.\n\nChange labels_fg1/fg2 to match objects in YOUR scene."
+      },
+      "widgets_values": [
+        "HunyuanWorld - FP8 Quantized Pipeline (RTX 4090 Compatible)\n\nThis workflow enables FP8 quantization and DeepCache for running on consumer GPUs.\n~20-24GB VRAM required. Scene class set to 'indoor' for interior scenes.\n\nChange labels_fg1/fg2 to match objects in YOUR scene."
+      ],
+      "color": "#332",
+      "bgcolor": "#553"
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "IMAGE"],
+    [2, 1, 1, 3, 0, "STRING"],
+    [3, 3, 0, 4, 0, "STRING"]
+  ],
+  "groups": [
+    {
+      "title": "FP8 Quantized Pipeline (Consumer GPU)",
+      "bounding": [80, 80, 1400, 830],
+      "color": "#8e3f3f"
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9,
+      "offset": [0, 0]
+    }
+  },
+  "version": 0.4
+}

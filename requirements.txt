@@ -1,0 +1,24 @@
+# Core dependencies
+opencv-python>=4.5.0
+numpy>=1.20.0
+Pillow>=8.0.0
+torch>=2.5.0
+open3d>=0.18.0
+
+# HunyuanWorld-1.0 — Install from source:
+# git clone https://github.com/Tencent-Hunyuan/HunyuanWorld-1.0.git
+# cd HunyuanWorld-1.0
+# pip install -e .
+
+# FLUX.1 backbone (via diffusers)
+diffusers>=0.28.0
+transformers>=4.40.0
+accelerate>=0.30.0
+safetensors>=0.4.0
+huggingface_hub>=0.23.0
+
+# Optional: Real-ESRGAN for super-resolution
+# pip install basicsr-fixed facexlib gfpgan
+
+# Optional: ZIM for segmentation
+# pip install zim-anything

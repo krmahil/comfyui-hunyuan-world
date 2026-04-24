@@ -1,0 +1,163 @@
+{
+  "last_node_id": 5,
+  "last_link_id": 5,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "HYWorldFullPipeline",
+      "pos": [200, 250],
+      "size": [420, 480],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "panorama",
+          "type": "IMAGE",
+          "links": [1],
+          "slot_index": 0
+        },
+        {
+          "name": "mesh_paths_json",
+          "type": "STRING",
+          "links": [2],
+          "slot_index": 1
+        },
+        {
+          "name": "output_directory",
+          "type": "STRING",
+          "links": [3],
+          "slot_index": 2
+        },
+        {
+          "name": "layer_count",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "HYWorldFullPipeline"
+      },
+      "widgets_values": [
+        "A vast alien desert with towering crystal formations under a purple sky, two suns setting on the horizon, cinematic lighting, 8k",
+        "",
+        "crystals rocks",
+        "formations dunes",
+        "outdoor",
+        42,
+        30.0,
+        50,
+        3840,
+        false,
+        false,
+        false,
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "PreviewImage",
+      "pos": [700, 250],
+      "size": [400, 300],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "title": "Panorama Preview"
+    },
+    {
+      "id": 3,
+      "type": "ShowText|pysssss",
+      "pos": [700, 600],
+      "size": [400, 140],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 2,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [""],
+      "title": "Generated Mesh Paths"
+    },
+    {
+      "id": 4,
+      "type": "ShowText|pysssss",
+      "pos": [700, 780],
+      "size": [400, 80],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 3,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [""],
+      "title": "Output Directory"
+    },
+    {
+      "id": 5,
+      "type": "Note",
+      "pos": [200, 100],
+      "size": [900, 110],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "properties": {
+        "text": "HunyuanWorld - Full Pipeline (Single Node)\n\nEnd-to-end: Text → Panorama → 3D World in one node.\nThis combines Text2Panorama + SceneGen into a single execution.\n\nTip: Use the two-stage workflow for more control over each stage.\nEnable fp8_quantization + use_cache for RTX 4090 compatibility."
+      },
+      "widgets_values": [
+        "HunyuanWorld - Full Pipeline (Single Node)\n\nEnd-to-end: Text → Panorama → 3D World in one node.\nThis combines Text2Panorama + SceneGen into a single execution.\n\nTip: Use the two-stage workflow for more control over each stage.\nEnable fp8_quantization + use_cache for RTX 4090 compatibility."
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "IMAGE"],
+    [2, 1, 1, 3, 0, "STRING"],
+    [3, 1, 2, 4, 0, "STRING"]
+  ],
+  "groups": [
+    {
+      "title": "Full Pipeline: Text → 3D World",
+      "bounding": [180, 80, 940, 800],
+      "color": "#6e3f8e"
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9,
+      "offset": [0, 0]
+    }
+  },
+  "version": 0.4
+}
